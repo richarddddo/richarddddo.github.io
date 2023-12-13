@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Thank You</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #fce4ec; /* Light pink background */
+      color: #333;
+      text-align: center;
+    }
+    header {
+      background-color: #ff80ab; /* Pink header */
+      padding: 20px;
+    }
+    h1 {
+      margin: 0;
+      font-size: 36px;
+      color: white;
+    }
+    main {
+      padding: 20px;
+    }
+    p {
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+    .clicks-left {
+      font-size: 24px;
+      font-weight: bold;
+      color: #ff80ab; /* Pink clicks left */
+    }
+    .continue-link {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #ff80ab; /* Pink button */
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+    }
+    .continue-link:hover {
+      background-color: #ff527b; /* Darker pink on hover */
+    }
+  </style>
+</head>
+<body>
+  <h1>Thank You!</h1>
+  <p>Click the page <span id="clicksLeft">3</span> more times to continue...</p>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const queryString = window.location.search;
+      const urlParams = new URLSearchParams(queryString);
+      const totalPrice = parseInt(urlParams.get('totalPrice')) || 0;
+
+      let clicks = totalPrice; // Set clicks to totalPrice
+
+      document.getElementById('clicksLeft').textContent = clicks.toString();
+      document.addEventListener('click', handleClick);
+
+      function handleClick() {
+        clicks--;
+        document.getElementById('clicksLeft').textContent = clicks.toString();
+
+        if (clicks === 0) {
+          redirectToNewPage();
+        }
+      }
+
+      function redirectToNewPage() {
+        // Redirect to a new page after the required number of clicks
+        window.location.href = 'card.html'; // Replace 'card.html' with your desired page
+      }
+    });
+  </script>
+</body>
+</html>

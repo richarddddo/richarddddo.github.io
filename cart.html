@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Shopping Cart</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #fce4ec; /* Light pink background */
+      color: #333;
+    }
+    header {
+      background-color: #ff80ab; /* Pink header */
+      padding: 20px;
+      text-align: center;
+    }
+    h1 {
+      margin: 0;
+      font-size: 36px;
+      color: white;
+    }
+    main {
+      padding: 20px;
+    }
+    .cart-items {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .cart-item {
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+    }
+    .cart-item img {
+      max-width: 100%;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+    h2 {
+      margin: 10px 0;
+      font-size: 20px;
+      color: #ff80ab; /* Pink heading */
+    }
+    p {
+      margin: 5px 0 15px;
+      font-size: 16px;
+    }
+    .total-amount {
+      text-align: right;
+      margin-bottom: 20px;
+      font-weight: bold;
+      color: #ff80ab; /* Pink total amount */
+    }
+    .purchase-btn {
+      background-color: #ff80ab; /* Pink purchase button */
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .purchase-btn:hover {
+      background-color: #ff527b; /* Darker pink on hover */
+    }
+    a {
+      color: #ff80ab; /* Pink link */
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <h1>Your Shopping Cart</h1>
+
+  <div class="cart-items">
+    <!-- Display added items here -->
+    <!-- This is a simulation, so you can modify this part to display actual added items in a real scenario -->
+    <!-- Content will be dynamically added by JavaScript -->
+  </div>
+
+  <div class="total-amount">
+    Total: $0 <!-- Initially set to zero -->
+  </div>
+
+  <p id="cartCountInfo"></p> <!-- Paragraph to display cart count -->
+
+  <button class="purchase-btn" onclick="simulatePurchase()">Purchase</button>
+
+  <script>
+    function displayCartItems() {
+      const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+      const cartContainer = document.querySelector('.cart-items');
+
+      cartItems.forEach(item => {
+        const cartItemDiv = document.createElement('div');
+        cartItemDiv.classList.add('cart-item');
+        cartItemDiv.textContent = `${item.name} - 10`;
+        cartContainer.appendChild(cartItemDiv);
+      });
+
+      const totalItems = cartItems.length; // Get total number of items in the cart
+      const totalPrice = totalItems * 10; // Calculate total price based on number of items
+      document.querySelector('.total-amount').textContent = `Total: $${totalPrice}`;
+
+    }
+
+    function simulatePurchase() {
+        const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+      const totalItems = cartItems.length; // Get total number of items in the cart
+
+      const totalPrice = totalItems * 10; // Calculate total price based on number of items
+
+      // Set totalPrice as a query parameter when redirecting to thankyou.html
+      window.location.href = `thankyou.html?totalPrice=${totalPrice}`;
+    }
+
+    // Call function to display cart items when the cart.html page loads
+    window.onload = displayCartItems;
+  </script>
+</body>
+</html>

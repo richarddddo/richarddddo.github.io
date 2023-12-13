@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Simple Online Shopping Store</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Welcome to Our Store</h1>
+    <a href="#" class="cart-link" onclick="goToCart()">Shopping Cart (0)</a>
+  </header>
+  
+  <main>
+    <div class="products">
+      <div class="product">
+        <img src="product1.jpg" alt="Product 1">
+        <h2>Product 1</h2>
+        <p>Price: 10</p>
+        <button onclick="addToCart('Product 1')">Add to Cart</button>
+      </div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+  <script>
+    function addToCart(productName, price) {
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const item = { name: productName, price: price };
+      cart.push(item);
+      localStorage.setItem('cart', JSON.stringify(cart));
+      updateCartCount(cart.length);
+    }
+
+    function updateCartCount(count) {
+        const cartLink = document.querySelector('.cart-link');
+      cartLink.textContent = `Shopping Cart (${count})`;
+    }
+
+    // Reset cart count on home page load
+    window.onload = () => {
+      localStorage.removeItem('cart'); // Clear cart data
+      updateCartCount(0); // Update cart count to zero on home page load
+    };
+  </script>
+</body>
+</html>
