@@ -1,0 +1,33 @@
+/* Add your styles here to beautify the webpage */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f7f7f7;
+    color: #333;
+}
+
+header {
+    background-color: #eaeaea;
+    text-align: center;
+    padding: 20px 0;
+}
+
+main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.letter {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.pictures {
+    /* Add styles for pictures container */
+    /* You can specify width, height, alignment, etc. */
+}
