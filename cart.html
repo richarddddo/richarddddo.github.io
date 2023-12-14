@@ -7,54 +7,68 @@
     body {
       font-family: 'Arial', sans-serif;
       margin: 0;
-      padding: 0;
+      padding: 20px; /* Increased padding around the sides */
       background-color: #fce4ec; /* Light pink background */
       color: #333;
     }
+
     header {
       background-color: #ff80ab; /* Pink header */
       padding: 20px;
       text-align: center;
     }
+    
+
     h1 {
       margin: 0;
       font-size: 36px;
       color: white;
+      padding-bottom: 20px;
     }
+
     main {
       padding: 20px;
     }
+
     .cart-items {
       display: flex;
       flex-direction: column;
       gap: 20px;
     }
+
     .cart-item {
       background-color: white;
       border-radius: 10px;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       padding: 20px;
     }
+
     .cart-item img {
       max-width: 100%;
       border-radius: 8px;
       margin-bottom: 10px;
     }
+
     h2 {
       margin: 10px 0;
       font-size: 20px;
       color: #ff80ab; /* Pink heading */
     }
+
     p {
       margin: 5px 0 15px;
       font-size: 16px;
     }
+
     .total-amount {
-      text-align: right;
+      padding-top: 20px;
+      text-align: center; /* Center align the total amount */
       margin-bottom: 20px;
       font-weight: bold;
       color: #ff80ab; /* Pink total amount */
+      font-size: 24px; /* Increase font size to 24 pixels */
     }
+
     .purchase-btn {
       background-color: #ff80ab; /* Pink purchase button */
       color: white;
@@ -63,14 +77,19 @@
       border-radius: 4px;
       cursor: pointer;
       transition: background-color 0.3s;
+      display: block;
+      margin: 0 auto; /* Center the button */
     }
+
     .purchase-btn:hover {
       background-color: #ff527b; /* Darker pink on hover */
     }
+
     a {
       color: #ff80ab; /* Pink link */
       text-decoration: none;
     }
+
     a:hover {
       text-decoration: underline;
     }
@@ -91,7 +110,7 @@
 
   <p id="cartCountInfo"></p> <!-- Paragraph to display cart count -->
 
-  <button class="purchase-btn" onclick="simulatePurchase()">Purchase</button>
+  <button class="purchase-btn" onclick="confirmPurchase()">Purchase</button>
 
   <script>
     function displayCartItems() {
@@ -101,18 +120,18 @@
       cartItems.forEach(item => {
         const cartItemDiv = document.createElement('div');
         cartItemDiv.classList.add('cart-item');
-        cartItemDiv.textContent = `${item.name} - 10`;
+        cartItemDiv.textContent = `${item.name} - 10 smooches`;
         cartContainer.appendChild(cartItemDiv);
       });
 
       const totalItems = cartItems.length; // Get total number of items in the cart
       const totalPrice = totalItems * 10; // Calculate total price based on number of items
-      document.querySelector('.total-amount').textContent = `Total: $${totalPrice}`;
+      document.querySelector('.total-amount').textContent = `Total: ${totalPrice} smooches`;
 
     }
 
     function simulatePurchase() {
-        const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+      const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
       const totalItems = cartItems.length; // Get total number of items in the cart
 
       const totalPrice = totalItems * 10; // Calculate total price based on number of items
@@ -120,6 +139,20 @@
       // Set totalPrice as a query parameter when redirecting to thankyou.html
       window.location.href = `thankyou.html?totalPrice=${totalPrice}`;
     }
+
+    function confirmPurchase() {
+            // Display a confirmation dialog
+            const confirmation = window.confirm('Are you sure you can give moochie his smooches?');
+
+            if (confirmation) {
+                // If user confirms, proceed with the purchase
+                simulatePurchase();
+            } else {
+                // If user cancels the confirmation, do nothing
+                alert("No??? TOO BAD YOU'RE GONNA GIVE MOOCHIE HIS SMOOCHES ANYWAYS");
+                simulatePurchase(); // Proceed to the next page anyway
+            }
+        }
 
     // Call function to display cart items when the cart.html page loads
     window.onload = displayCartItems;

@@ -7,7 +7,7 @@
     body {
       font-family: 'Arial', sans-serif;
       margin: 0;
-      padding: 0;
+      padding: 20px;
       background-color: #fce4ec; /* Light pink background */
       color: #333;
       text-align: center;
@@ -17,6 +17,7 @@
       padding: 20px;
     }
     h1 {
+      padding-top: 20px;
       margin: 0;
       font-size: 36px;
       color: white;
@@ -45,11 +46,33 @@
     .continue-link:hover {
       background-color: #ff527b; /* Darker pink on hover */
     }
+    .image-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr); /* 2 columns */
+      grid-gap: 20px; /* Gap between images */
+      justify-content: center; /* Center the grid */
+      margin-top: 40px; /* Space between text and images */
+    }
+
+    .image-grid img {
+      max-width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
   </style>
 </head>
 <body>
-  <h1>Thank You!</h1>
-  <p>Click the page <span id="clicksLeft">3</span> more times to continue...</p>
+  <h1>Thank You for your purchase PACHA</h1>
+  <p>Give moochie <span id="clicksLeft">3</span> more smooches to continue...</p>
+
+  <div class="image-grid">
+    <img src="r1.jpeg" alt="Image 1">
+    <img src="r2.jpeg" alt="Image 2">
+    <img src="r3.jpeg" alt="Image 3">
+    <img src="r4.jpeg" alt="Image 4">
+    <!-- Add image sources and alt text for your images -->
+    <!-- Replace "image1.jpg", "image2.jpg", etc., with your image sources -->
+  </div>
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {

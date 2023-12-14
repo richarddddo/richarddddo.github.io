@@ -2,25 +2,40 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Simple Online Shopping Store</title>
+  <title>Moochie's Shop</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <header>
-    <h1>Welcome to Our Store</h1>
-    <a href="#" class="cart-link" onclick="goToCart()">Shopping Cart (0)</a>
+    <h1>Welcome to Moochie's Shop</h1>
   </header>
   
   <main>
     <div class="products">
       <div class="product">
-        <img src="product1.jpg" alt="Product 1">
-        <h2>Product 1</h2>
-        <p>Price: 10</p>
-        <button onclick="addToCart('Product 1')">Add to Cart</button>
+        <img src="letter_image.png" alt="Letter">
+        <h2>Special Letter</h2>
+        <p>Price: 10 smooches</p>
+        <button onclick="addToCart('Special Letter')">Add to Cart</button>
+      </div>
+      <div class="product">
+        <img src="product1.jpg" alt="Bite">
+        <h2 class="sold-out">Bite the juicy bicep</h2>
+        <p class="sold-out">Price: 20 smooches</p>
+        <button disabled>Sold Out</button>
+      </div>
+      <div class="product">
+        <img src="product1.jpg" alt="Balls">
+        <h2 class="sold-out">Smack Moochie in the balls</h2>
+        <p class="sold-out">Price: 50 smooches</p>
+        <button disabled>Sold Out</button>
       </div>
     </div>
   </main>
+
+  <footer>
+    <a href="#" class="cart-link" onclick="goToCart()">Shopping Cart (0)</a>
+  </footer>
 
   <script src="script.js"></script>
   <script>
